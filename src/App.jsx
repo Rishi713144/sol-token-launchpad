@@ -12,19 +12,24 @@ import '@solana/wallet-adapter-react-ui/styles.css';
 
 function App() {
   return (
-    <div style={{width: "100vw"}}>
+    <div className="app-wrapper">
       <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
         <WalletProvider wallets={[]} autoConnect>
             <WalletModalProvider>
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                padding: 20
-              }}>
-                <WalletMultiButton />
-                <WalletDisconnectButton />
-              </div>
-              <TokenLaunchpad></TokenLaunchpad>
+              {/* Modern Glassmorphic Navbar */}
+              <nav className="navbar" style={{ justifyContent: 'center', flexDirection: 'column', gap: '20px', padding: '30px', width: '100%', boxSizing: 'border-box' }}>
+                <div className="logo">
+                  <div className="logo-icon"></div>
+                  <h2 className="logo-text">NovaaMint</h2>
+                </div>
+                <div className="wallet-buttons" style={{ justifyContent: 'center', display: 'flex' }}>
+                  <WalletMultiButton />
+                  <WalletDisconnectButton />
+                </div>
+              </nav>
+
+              {/* Main Content */}
+              <TokenLaunchpad />
             </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>
